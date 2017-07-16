@@ -48,9 +48,14 @@ namespace Treehouse.FitnessFrog.Controllers
         public ActionResult Add(DateTime? date, int? activityId, double? duration, 
             Entry.IntensityLevel? intensity, bool? exclude, string notes)
         {
+            /*
+            //View is able to get values using HtmlHelper
             ViewBag.Date = date;
+            var dateString = this.ModelState["date"].Value.AttemptedValue;
+            var errors = this.ModelState["date"].Errors;
             ViewBag.Notes = notes;
             ViewBag.Exclude = exclude;
+            */
             return View();
         }
 
