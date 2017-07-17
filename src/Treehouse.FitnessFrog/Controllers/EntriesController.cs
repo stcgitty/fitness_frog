@@ -40,23 +40,28 @@ namespace Treehouse.FitnessFrog.Controllers
         }
 
         public ActionResult Add()
-        {              
-            return View();
+        {
+            var entry = new Entry()
+            {
+                Date = DateTime.Today
+            };
+            return View(entry);
         }
 
         [HttpPost]
-        public ActionResult Add(DateTime? date, int? activityId, double? duration, 
-            Entry.IntensityLevel? intensity, bool? exclude, string notes)
+        public ActionResult Add(Entry entry)
         {
-            /*
+            if (ModelState.IsValid)
+            {
+                this._entriesRepository.AddEntry(entry);
+
+                //Redirect
+            }
             //View is able to get values using HtmlHelper
-            ViewBag.Date = date;
-            var dateString = this.ModelState["date"].Value.AttemptedValue;
-            var errors = this.ModelState["date"].Errors;
-            ViewBag.Notes = notes;
-            ViewBag.Exclude = exclude;
-            */
-            return View();
+            // values are accessible via Request, ModelState, named params
+            // errors are also available via ModelState?
+            
+            return View(entry);
         }
 
 
