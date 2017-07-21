@@ -55,7 +55,7 @@ namespace Treehouse.FitnessFrog.Controllers
             {
                 this._entriesRepository.AddEntry(entry);
 
-                //Redirect
+                return this.RedirectToAction("Index");
             }
             //View is able to get values using HtmlHelper
             // values are accessible via Request, ModelState, named params
