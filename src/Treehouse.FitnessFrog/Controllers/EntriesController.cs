@@ -43,8 +43,13 @@ namespace Treehouse.FitnessFrog.Controllers
         {
             var entry = new Entry()
             {
-                Date = DateTime.Today
+                Date = DateTime.Today,
+                //default activity is 0.
+                //ActivityId = 2 // This is used (by helper) as the model state is empty.
             };
+            ViewBag.ActivitySelectListItems 
+                = new SelectList(Data.Data.Activities, "Id", "Name");
+
             return View(entry);
         }
 
@@ -60,7 +65,12 @@ namespace Treehouse.FitnessFrog.Controllers
             //View is able to get values using HtmlHelper
             // values are accessible via Request, ModelState, named params
             // errors are also available via ModelState?
-            
+
+            //entry.ActivityId = 2; //demos that model state gets priority over mdoel in helper.
+
+            ViewBag.ActivitySelectListItems
+                 = new SelectList(Data.Data.Activities, "Id", "Name");
+
             return View(entry);
         }
 

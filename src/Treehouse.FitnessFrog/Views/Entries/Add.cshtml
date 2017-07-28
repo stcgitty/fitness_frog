@@ -1,9 +1,13 @@
 ﻿@model Treehouse.FitnessFrog.Models.Entry
-
+@using Treehouse.FitnessFrog.Models
 
 @{
     ViewBag.Title = "Add Entry";
 }
+
+@*this is a comment
+
+hasdfsdf*@
 
 <h2>@ViewBag.Title</h2>
 
@@ -20,7 +24,8 @@
 
             <div class="form-group">
                 @Html.LabelFor(m => m.ActivityId, new { @class = "control-label" })
-                @Html.TextBoxFor(m => m.ActivityId, new { @class = "form-control" })
+                @Html.DropDownListFor(m => m.ActivityId, (SelectList) ViewBag.ActivitySelectListItems,
+                    "", new { @class = "form-control" })
             </div>
 
             <div class="form-group">
@@ -30,7 +35,17 @@
 
             <div class="form-group">
                 @Html.LabelFor(m => m.Intensity, new { @class = "control-label" })
-                @Html.TextBoxFor(m => m.Intensity, new { @class = "form-control" })
+                <div>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(m => m.Intensity, Entry.IntensityLevel.Low /*new { @class = "form-control" }*/) @Entry.IntensityLevel.Low
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(m => m.Intensity, Entry.IntensityLevel.Medium /*new { @class = "form-control" }*/) @Entry.IntensityLevel.Medium
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(m => m.Intensity, Entry.IntensityLevel.High /*new { @class = "form-control" }*/) @Entry.IntensityLevel.High
+                    </label>
+                </div>
             </div>
 
             <div class="form-group">
